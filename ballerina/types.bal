@@ -216,10 +216,10 @@ public type GetRequestTypeGroupsQueries record {
 
 # A file uploaded as a temporary attachment
 public type TemporaryAttachment record {
-    # ID of the temporary attachment, used to attach it to a request
-    string temporaryAttachmentId?;
     # Name of the uploaded file
     string fileName?;
+    # ID of the temporary attachment, used to attach it to a request
+    string temporaryAttachmentId?;
 };
 
 # Represents the Queries record for the operation: inviteCustomer

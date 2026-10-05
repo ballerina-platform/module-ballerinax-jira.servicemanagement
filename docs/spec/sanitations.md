@@ -9,8 +9,9 @@ This document records the sanitation done on top of the official OpenAPI specifi
 The OpenAPI specification is obtained from [wso2/api-specs](https://github.com/wso2/api-specs/blob/main/openapi/jira/servicemanagement/1001.0.0/openapi.json).
 These changes are done in order to improve the overall usability, and as workarounds for some known language limitations.
 
-`docs/spec/openapi.json` is the unmodified source specification. Every change below is applied to
-`docs/spec/aligned_ballerina_openapi.json`, after `bal openapi flatten` and `bal openapi align`.
+Items 3 to 10 are applied directly to `docs/spec/openapi.json`, so they survive every flatten and align.
+Item 1 is re-applied to the aligned spec after `bal openapi align`, item 2 is persisted in `docs/spec/ai-mappings.json`
+and item 11 is a post-generation patch to `ballerina/client.bal`.
 
 ## Sanitization Details
 

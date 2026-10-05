@@ -59,7 +59,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A comment to add alongside another action"
             },
             "ApprovalDTO": {
                 "additionalProperties": false,
@@ -117,7 +118,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "An approval on a customer request"
             },
             "ApprovalDecisionRequestDTO": {
                 "additionalProperties": false,
@@ -131,7 +133,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Decision to record against an approval"
             },
             "ApproverDTO": {
                 "additionalProperties": false,
@@ -154,13 +157,19 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "An approver and their decision"
             },
             "ArticleDTO": {
                 "additionalProperties": false,
                 "properties": {
                     "content": {
-                        "$ref": "#/components/schemas/ContentDTO"
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ContentDTO"
+                            }
+                        ],
+                        "description": "Location of the rendered article content"
                     },
                     "excerpt": {
                         "description": "Excerpt of the article which matches the given query string.",
@@ -179,7 +188,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A knowledge base article"
             },
             "AssetsWorkspaceDTO": {
                 "additionalProperties": false,
@@ -190,6 +200,20 @@
                         "type": "string"
                     }
                 },
+                "type": "object"
+            },
+            "AttachTemporaryFileRequest": {
+                "description": "Multipart form carrying the file to upload as a temporary attachment",
+                "properties": {
+                    "file": {
+                        "description": "The file to upload. The multipart field must be named `file`",
+                        "format": "binary",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "file"
+                ],
                 "type": "object"
             },
             "AttachmentCreateDTO": {
@@ -215,7 +239,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Temporary attachments to add to a request, with an optional comment"
             },
             "AttachmentCreateResultDTO": {
                 "additionalProperties": false,
@@ -237,7 +262,8 @@
                         "description": "Details of the comment included with the attachments."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Attachments and comment created on a request"
             },
             "AttachmentDTO": {
                 "additionalProperties": false,
@@ -280,7 +306,8 @@
                         "type": "integer"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "An attachment on a customer request"
             },
             "AttachmentLinkDTO": {
                 "additionalProperties": false,
@@ -297,7 +324,8 @@
                     },
                     "self": {
                         "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "description": "REST API URL of the attachment"
                     },
                     "thumbnail": {
                         "description": "URL for the attachment's thumbnail image.",
@@ -305,7 +333,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Links to an attachment, its content and its thumbnail"
             },
             "AvatarUrlsBean": {
                 "additionalProperties": false,
@@ -331,7 +360,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "URLs of a user avatar in different sizes"
             },
             "CSATFeedbackFullDTO": {
                 "additionalProperties": false,
@@ -354,7 +384,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Customer satisfaction (CSAT) feedback on a request"
             },
             "ChangeDetails": {
                 "additionalProperties": false,
@@ -454,7 +485,8 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Details of a comment to add to a request"
             },
             "CommentDTO": {
                 "additionalProperties": false,
@@ -519,7 +551,8 @@
                         "description": "The rendered body of the comment."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A comment on a customer request"
             },
             "ContentDTO": {
                 "additionalProperties": false,
@@ -529,7 +562,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Location of the rendered content of a knowledge base article"
             },
             "CustomerCreateDTO": {
                 "additionalProperties": false,
@@ -547,7 +581,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Details of a customer to create"
             },
             "CustomerRequestActionDTO": {
                 "additionalProperties": false,
@@ -557,7 +592,8 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Whether an action is allowed on a customer request"
             },
             "CustomerRequestActionsDTO": {
                 "additionalProperties": false,
@@ -595,7 +631,8 @@
                         "description": "Action of removing participants from a request."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Actions the calling user can perform on a customer request"
             },
             "CustomerRequestCreateMetaDTO": {
                 "additionalProperties": false,
@@ -616,7 +653,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Fields and options available when creating a request of a request type"
             },
             "CustomerRequestDTO": {
                 "additionalProperties": false,
@@ -752,7 +790,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A customer request"
             },
             "CustomerRequestFieldValueDTO": {
                 "additionalProperties": false,
@@ -773,7 +812,8 @@
                         "description": "Value of the field."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "The value of a field on a customer request"
             },
             "CustomerRequestLinkDTO": {
                 "additionalProperties": false,
@@ -790,7 +830,8 @@
                     },
                     "self": {
                         "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "description": "REST API URL of the customer request"
                     },
                     "web": {
                         "description": "Web URL for the request.",
@@ -798,7 +839,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Links to a customer request in the agent view, the portal and the REST API"
             },
             "CustomerRequestStatusDTO": {
                 "additionalProperties": false,
@@ -826,7 +868,8 @@
                         "description": "Date on which the status was attained."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A status of a customer request and when it was set"
             },
             "CustomerTransitionDTO": {
                 "additionalProperties": false,
@@ -840,7 +883,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A workflow transition available to the customer on a request"
             },
             "CustomerTransitionExecutionDTO": {
                 "additionalProperties": false,
@@ -858,7 +902,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Transition to perform on a customer request, with an optional comment"
             },
             "DateDTO": {
                 "additionalProperties": false,
@@ -881,7 +926,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A date and time rendered in several formats"
             },
             "DurationDTO": {
                 "additionalProperties": false,
@@ -896,7 +942,8 @@
                         "type": "integer"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A duration in milliseconds and in a human-readable form"
             },
             "EntityProperty": {
                 "additionalProperties": false,
@@ -916,13 +963,20 @@
                 "additionalProperties": false,
                 "properties": {
                     "errorMessage": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Human-readable error message"
                     },
                     "i18nErrorMessage": {
-                        "$ref": "#/components/schemas/I18nErrorMessage"
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/I18nErrorMessage"
+                            }
+                        ],
+                        "description": "Internationalized form of the error message"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Error returned by the Jira Service Management API"
             },
             "Expandable": {
                 "additionalProperties": false,
@@ -1027,7 +1081,8 @@
                         "type": "object"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Answers to a request type form, keyed by question ID"
             },
             "FormAnswer": {
                 "additionalProperties": false,
@@ -1074,7 +1129,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "An answer to a form question"
             },
             "FormValidationErrorContextDTO": {
                 "additionalProperties": false,
@@ -1088,7 +1144,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Context of a form validation error"
             },
             "FormValidationErrorDTO": {
                 "additionalProperties": false,
@@ -1118,7 +1175,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A single validation error reported for a form"
             },
             "FormValidationErrorResponseDTO": {
                 "additionalProperties": false,
@@ -1143,7 +1201,8 @@
                         "description": "Internationalized error message details."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Validation errors reported for a form"
             },
             "HistoryMetadata": {
                 "additionalProperties": true,
@@ -1246,16 +1305,19 @@
                 "additionalProperties": false,
                 "properties": {
                     "i18nKey": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Key of the internationalized message"
                     },
                     "parameters": {
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Parameters substituted into the message"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Internationalized error message key and parameters"
             },
             "I18nErrorMessageDTO": {
                 "additionalProperties": false,
@@ -1272,7 +1334,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Internationalized error message key and parameters"
             },
             "IncludedFields": {
                 "additionalProperties": false,
@@ -1282,24 +1345,28 @@
                             "type": "string"
                         },
                         "type": "array",
-                        "uniqueItems": true
+                        "uniqueItems": true,
+                        "description": "Fields actually included in the response"
                     },
                     "excluded": {
                         "items": {
                             "type": "string"
                         },
                         "type": "array",
-                        "uniqueItems": true
+                        "uniqueItems": true,
+                        "description": "Fields explicitly excluded from the response"
                     },
                     "included": {
                         "items": {
                             "type": "string"
                         },
                         "type": "array",
-                        "uniqueItems": true
+                        "uniqueItems": true,
+                        "description": "Fields explicitly requested in the response"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Fields included in or excluded from an issue response"
             },
             "InputStreamSource": {
                 "additionalProperties": false,
@@ -1353,10 +1420,16 @@
                     },
                     "fields": {
                         "additionalProperties": {},
-                        "type": "object"
+                        "type": "object",
+                        "description": "Issue fields, keyed by field ID"
                     },
                     "fieldsToInclude": {
-                        "$ref": "#/components/schemas/IncludedFields"
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/IncludedFields"
+                            }
+                        ],
+                        "description": "Fields to include in the issue response"
                     },
                     "id": {
                         "description": "The ID of the issue.",
@@ -1489,7 +1562,8 @@
                         "type": "boolean"
                     },
                     "looped": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the transition loops back to the same status"
                     },
                     "name": {
                         "description": "The name of the issue transition.",
@@ -1516,7 +1590,8 @@
                             "$ref": "#/components/schemas/FieldMetadata"
                         },
                         "readOnly": true,
-                        "type": "object"
+                        "type": "object",
+                        "description": "Metadata of the editable fields, keyed by field ID"
                     }
                 },
                 "type": "object"
@@ -1525,83 +1600,107 @@
                 "additionalProperties": false,
                 "properties": {
                     "array": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is an array"
                     },
                     "bigDecimal": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a big decimal"
                     },
                     "bigInteger": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a big integer"
                     },
                     "bigIntegerValue": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Node value as a big integer"
                     },
                     "binary": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds binary data"
                     },
                     "binaryValue": {
                         "items": {
                             "format": "byte",
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Binary value of the node"
                     },
                     "boolean": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a boolean"
                     },
                     "booleanValue": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Boolean value of the node"
                     },
                     "containerNode": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is a container node"
                     },
                     "decimalValue": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "Node value as a decimal"
                     },
                     "double": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a double"
                     },
                     "doubleValue": {
                         "format": "double",
-                        "type": "number"
+                        "type": "number",
+                        "description": "Node value as a double"
                     },
                     "elements": {
-                        "type": "object"
+                        "type": "object",
+                        "description": "Elements of an array node"
                     },
                     "fieldNames": {
-                        "type": "object"
+                        "type": "object",
+                        "description": "Names of the fields of an object node"
                     },
                     "fields": {
-                        "type": "object"
+                        "type": "object",
+                        "description": "Fields of an object node"
                     },
                     "floatingPointNumber": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a floating-point number"
                     },
                     "int": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds an integer"
                     },
                     "intValue": {
                         "format": "int32",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Node value as an integer"
                     },
                     "integralNumber": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds an integral number"
                     },
                     "long": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a long"
                     },
                     "longValue": {
                         "format": "int64",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Node value as a long"
                     },
                     "missingNode": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is missing"
                     },
                     "null": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is null"
                     },
                     "number": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds a number"
                     },
                     "numberType": {
                         "enum": [
@@ -1612,46 +1711,59 @@
                             "DOUBLE",
                             "BIG_DECIMAL"
                         ],
-                        "type": "string"
+                        "type": "string",
+                        "description": "Numeric type of the node"
                     },
                     "numberValue": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "Numeric value of the node"
                     },
                     "object": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is an object"
                     },
                     "pojo": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node wraps a plain Java object"
                     },
                     "textValue": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Text value of the node"
                     },
                     "textual": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node holds text"
                     },
                     "valueAsBoolean": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Node value as a boolean"
                     },
                     "valueAsDouble": {
                         "format": "double",
-                        "type": "number"
+                        "type": "number",
+                        "description": "Node value as a double"
                     },
                     "valueAsInt": {
                         "format": "int32",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Node value as an integer"
                     },
                     "valueAsLong": {
                         "format": "int64",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Node value as a long"
                     },
                     "valueAsText": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Node value as text"
                     },
                     "valueNode": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the node is a value node"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Generic JSON value node as serialized by the Jira backend"
             },
             "JsonTypeBean": {
                 "additionalProperties": false,
@@ -1705,26 +1817,36 @@
                         "items": {
                             "$ref": "#/components/schemas/LinkGroup"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Nested link groups"
                     },
                     "header": {
-                        "$ref": "#/components/schemas/SimpleLink"
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/SimpleLink"
+                            }
+                        ],
+                        "description": "Header link of the group"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ID of the link group"
                     },
                     "links": {
                         "items": {
                             "$ref": "#/components/schemas/SimpleLink"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Links in the group"
                     },
                     "styleClass": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "CSS style class of the group"
                     },
                     "weight": {
                         "format": "int32",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Sort weight of the group"
                     }
                 },
                 "type": "object"
@@ -1765,41 +1887,6 @@
                 },
                 "type": "object"
             },
-            "MultipartFile": {
-                "additionalProperties": false,
-                "properties": {
-                    "bytes": {
-                        "items": {
-                            "format": "byte",
-                            "type": "string"
-                        },
-                        "type": "array"
-                    },
-                    "contentType": {
-                        "type": "string"
-                    },
-                    "empty": {
-                        "type": "boolean"
-                    },
-                    "inputStream": {
-                        "type": "object"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "originalFilename": {
-                        "type": "string"
-                    },
-                    "resource": {
-                        "$ref": "#/components/schemas/Resource"
-                    },
-                    "size": {
-                        "format": "int64",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
             "Operations": {
                 "additionalProperties": true,
                 "description": "Details of the operations that can be performed on the issue.",
@@ -1826,7 +1913,8 @@
                 "required": [
                     "name"
                 ],
-                "type": "object"
+                "type": "object",
+                "description": "Details of an organization to create"
             },
             "OrganizationDTO": {
                 "additionalProperties": false,
@@ -1864,7 +1952,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A Jira Service Management organization"
             },
             "OrganizationServiceDeskUpdateDTO": {
                 "additionalProperties": true,
@@ -1882,7 +1971,8 @@
                 "required": [
                     "organizationId"
                 ],
-                "type": "object"
+                "type": "object",
+                "description": "Organization to add to or remove from a service desk"
             },
             "PageOfChangelogs": {
                 "additionalProperties": false,
@@ -1924,7 +2014,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -1961,7 +2052,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of approval results"
             },
             "PagedDTOArticleDTO": {
                 "additionalProperties": false,
@@ -1970,7 +2062,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2007,7 +2100,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of article results"
             },
             "PagedDTOAssetsWorkspaceDTO": {
                 "additionalProperties": false,
@@ -2016,7 +2110,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2053,7 +2148,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of assets workspace results"
             },
             "PagedDTOAttachmentDTO": {
                 "additionalProperties": false,
@@ -2062,7 +2158,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2099,7 +2196,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of attachment results"
             },
             "PagedDTOCommentDTO": {
                 "additionalProperties": false,
@@ -2108,7 +2206,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2145,7 +2244,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of comment results"
             },
             "PagedDTOCustomerRequestDTO": {
                 "additionalProperties": false,
@@ -2154,7 +2254,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2191,7 +2292,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of customer request results"
             },
             "PagedDTOCustomerRequestStatusDTO": {
                 "additionalProperties": false,
@@ -2200,7 +2302,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2237,7 +2340,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of customer request status results"
             },
             "PagedDTOCustomerTransitionDTO": {
                 "additionalProperties": false,
@@ -2246,7 +2350,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2283,7 +2388,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of customer transition results"
             },
             "PagedDTOInsightWorkspaceDTO": {
                 "additionalProperties": false,
@@ -2292,7 +2398,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2329,7 +2436,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of insight workspace results"
             },
             "PagedDTOIssueBean": {
                 "additionalProperties": false,
@@ -2338,7 +2446,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2375,7 +2484,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of issue bean results"
             },
             "PagedDTOOrganizationDTO": {
                 "additionalProperties": false,
@@ -2384,7 +2494,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2421,7 +2532,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of organization results"
             },
             "PagedDTOQueueDTO": {
                 "additionalProperties": false,
@@ -2430,7 +2542,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2467,7 +2580,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of queue results"
             },
             "PagedDTORequestTypeDTO": {
                 "additionalProperties": false,
@@ -2476,7 +2590,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2513,7 +2628,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of request type results"
             },
             "PagedDTORequestTypeGroupDTO": {
                 "additionalProperties": false,
@@ -2522,7 +2638,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2559,7 +2676,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of request type group results"
             },
             "PagedDTOServiceDeskDTO": {
                 "additionalProperties": false,
@@ -2568,7 +2686,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2605,7 +2724,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of service desk results"
             },
             "PagedDTOSlaInformationDTO": {
                 "additionalProperties": false,
@@ -2614,7 +2734,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2651,7 +2772,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of sla information results"
             },
             "PagedDTOUserDTO": {
                 "additionalProperties": false,
@@ -2660,7 +2782,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": "array",
+                        "description": "Fields that can be expanded in the response"
                     },
                     "_links": {
                         "allOf": [
@@ -2697,7 +2820,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A page of user results"
             },
             "PagedLinkDTO": {
                 "additionalProperties": false,
@@ -2708,7 +2832,8 @@
                         "type": "string"
                     },
                     "context": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Context path of the paged resource"
                     },
                     "next": {
                         "description": "REST API URL for the next page, if there is one.",
@@ -2726,7 +2851,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Pagination links of a paged response"
             },
             "ProjectDetails": {
                 "additionalProperties": false,
@@ -2856,16 +2982,19 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A queue of a service desk"
             },
             "RenderedValueDTO": {
                 "additionalProperties": false,
                 "properties": {
                     "html": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "HTML rendering of the field value"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "The HTML rendering of a field value"
             },
             "RequestCreateDTO": {
                 "additionalProperties": false,
@@ -2911,7 +3040,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Details of a customer request to create"
             },
             "RequestFieldValidationErrorDTO": {
                 "additionalProperties": false,
@@ -2925,7 +3055,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A validation error on a request field"
             },
             "RequestNotificationSubscriptionDTO": {
                 "additionalProperties": false,
@@ -2935,7 +3066,8 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Whether the user is subscribed to notifications for a request"
             },
             "RequestParticipantUpdateDTO": {
                 "additionalProperties": false,
@@ -2955,7 +3087,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Participants to add to or remove from a request"
             },
             "RequestTypeCreateDTO": {
                 "additionalProperties": false,
@@ -2977,7 +3110,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Details of a request type to create"
             },
             "RequestTypeDTO": {
                 "additionalProperties": false,
@@ -3065,7 +3199,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A request type of a service desk"
             },
             "RequestTypeFieldDTO": {
                 "additionalProperties": false,
@@ -3116,10 +3251,12 @@
                         "type": "array"
                     },
                     "visible": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the field is shown on the portal"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A field of a request type"
             },
             "RequestTypeFieldValueDTO": {
                 "additionalProperties": false,
@@ -3140,7 +3277,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A valid or preset value of a request type field"
             },
             "RequestTypeGroupDTO": {
                 "additionalProperties": false,
@@ -3154,7 +3292,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A group of request types in a service desk portal"
             },
             "RequestTypeIconDTO": {
                 "additionalProperties": false,
@@ -3172,7 +3311,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "The icon of a request type"
             },
             "RequestTypeIconLinkDTO": {
                 "additionalProperties": false,
@@ -3186,7 +3326,8 @@
                         "type": "object"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Links to the images of a request type icon"
             },
             "RequestTypePermissionCheckRequestDTO": {
                 "additionalProperties": false,
@@ -3215,7 +3356,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Request types and permissions to check for a user"
             },
             "RequestTypePermissionCheckResponse": {
                 "additionalProperties": false,
@@ -3237,7 +3379,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Permissions the user holds on a request type"
             },
             "RequestValidationResultDTO": {
                 "additionalProperties": false,
@@ -3276,47 +3419,8 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object"
-            },
-            "Resource": {
-                "additionalProperties": false,
-                "properties": {
-                    "contentAsByteArray": {
-                        "items": {
-                            "format": "byte",
-                            "type": "string"
-                        },
-                        "type": "array"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "file": {
-                        "format": "binary",
-                        "type": "string"
-                    },
-                    "filename": {
-                        "type": "string"
-                    },
-                    "inputStream": {
-                        "type": "object"
-                    },
-                    "open": {
-                        "type": "boolean"
-                    },
-                    "readable": {
-                        "type": "boolean"
-                    },
-                    "uri": {
-                        "format": "uri",
-                        "type": "string"
-                    },
-                    "url": {
-                        "format": "url",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
+                "type": "object",
+                "description": "Result of validating a customer request before it is created"
             },
             "Scope": {
                 "additionalProperties": true,
@@ -3348,10 +3452,12 @@
                 "properties": {
                     "self": {
                         "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "description": "URL of the resource"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Link to the REST resource itself"
             },
             "ServiceDeskCustomerDTO": {
                 "additionalProperties": false,
@@ -3373,7 +3479,8 @@
                         "uniqueItems": true
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Customers to add to or remove from a service desk"
             },
             "ServiceDeskCustomerInviteDTO": {
                 "additionalProperties": false,
@@ -3387,7 +3494,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Details of a customer to invite to a service desk"
             },
             "ServiceDeskDTO": {
                 "additionalProperties": false,
@@ -3421,33 +3529,41 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A service desk"
             },
             "SimpleLink": {
                 "additionalProperties": false,
                 "description": "Details about the operations available in this version.",
                 "properties": {
                     "href": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Target URL of the link"
                     },
                     "iconClass": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "CSS class of the link icon"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "ID of the link"
                     },
                     "label": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Display label of the link"
                     },
                     "styleClass": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "CSS style class of the link"
                     },
                     "title": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Title (tooltip) of the link"
                     },
                     "weight": {
                         "format": "int32",
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Sort weight of the link"
                     }
                 },
                 "type": "object",
@@ -3511,7 +3627,8 @@
                         "description": "Time and date at which the SLA cycle completed."
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A completed cycle of an SLA metric"
             },
             "SlaInformationDTO": {
                 "additionalProperties": false,
@@ -3552,7 +3669,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "SLA metric of a customer request, with its ongoing and completed cycles"
             },
             "SlaInformationOngoingCycleDTO": {
                 "additionalProperties": false,
@@ -3610,7 +3728,8 @@
                         "type": "boolean"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "The ongoing cycle of an SLA metric"
             },
             "SoftwareInfoDTO": {
                 "additionalProperties": false,
@@ -3648,7 +3767,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Version and build information about the Jira Service Management instance"
             },
             "SourceDTO": {
                 "additionalProperties": true,
@@ -3661,7 +3781,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Source of a knowledge base article"
             },
             "StatusCategory": {
                 "additionalProperties": true,
@@ -3698,7 +3819,7 @@
             },
             "StatusDetails": {
                 "additionalProperties": true,
-                "description": "A status.",
+                "description": "Details of an issue status",
                 "properties": {
                     "description": {
                         "description": "The description of the status.",
@@ -3742,6 +3863,33 @@
                         ],
                         "description": "The category assigned to the status.",
                         "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "TemporaryAttachment": {
+                "description": "A file uploaded as a temporary attachment",
+                "properties": {
+                    "fileName": {
+                        "description": "Name of the uploaded file",
+                        "type": "string"
+                    },
+                    "temporaryAttachmentId": {
+                        "description": "ID of the temporary attachment, used to attach it to a request",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TemporaryAttachments": {
+                "description": "Temporary attachments created by an upload",
+                "properties": {
+                    "temporaryAttachments": {
+                        "description": "The uploaded temporary attachments",
+                        "items": {
+                            "$ref": "#/components/schemas/TemporaryAttachment"
+                        },
+                        "type": "array"
                     }
                 },
                 "type": "object"
@@ -3813,7 +3961,8 @@
                         "type": "string"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "A Jira user"
             },
             "UserDetails": {
                 "additionalProperties": false,
@@ -3893,10 +4042,12 @@
                     },
                     "self": {
                         "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "description": "REST API URL of the user"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Links to a user in the REST API and to their avatars"
             },
             "UsersOrganizationUpdateDTO": {
                 "additionalProperties": true,
@@ -3921,7 +4072,8 @@
                         "type": "array"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "description": "Users to add to or remove from an organization"
             }
         },
         "securitySchemes": {
@@ -4129,7 +4281,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Email address and display name of the customer to create"
                 },
                 "responses": {
                     "201": {
@@ -4266,10 +4419,10 @@
                                 }
                             }
                         },
-                        "description": "201 response"
+                        "description": "Returns the created customer"
                     }
                 },
-                "summary": "Create customer",
+                "summary": "Create customer without permission check",
                 "x-atlassian-data-security-policy": [
                     {
                         "app-access-rule-exempt": true
@@ -4296,11 +4449,6 @@
                 ],
                 "responses": {
                     "204": {
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        },
                         "description": "Returned if the request is successful."
                     },
                     "401": {
@@ -4413,7 +4561,7 @@
                     },
                     {}
                 ],
-                "summary": "Get info",
+                "summary": "Get Jira Service Management instance info",
                 "tags": [
                     "Info"
                 ],
@@ -4438,7 +4586,8 @@
                             "default": 0,
                             "format": "int32",
                             "type": "integer"
-                        }
+                        },
+                        "description": "The starting index of the returned objects. Base index: 0"
                     },
                     {
                         "in": "query",
@@ -4447,7 +4596,8 @@
                             "default": 50,
                             "format": "int32",
                             "type": "integer"
-                        }
+                        },
+                        "description": "The maximum number of objects to return per page"
                     }
                 ],
                 "responses": {
@@ -4459,7 +4609,7 @@
                                 }
                             }
                         },
-                        "description": "200 response"
+                        "description": "Returns a page of Insight workspace IDs"
                     },
                     "500": {
                         "content": {
@@ -4643,7 +4793,7 @@
         "/rest/servicedeskapi/knowledgebase/article/view/{pageId}": {
             "get": {
                 "deprecated": false,
-                "description": "",
+                "description": "Returns the rendered HTML content of a knowledge base article.",
                 "operationId": "viewArticle",
                 "parameters": [
                     {
@@ -4653,7 +4803,8 @@
                         "schema": {
                             "format": "int64",
                             "type": "integer"
-                        }
+                        },
+                        "description": "The ID of the knowledge base article page"
                     }
                 ],
                 "responses": {
@@ -4665,7 +4816,7 @@
                                 }
                             }
                         },
-                        "description": "200 response"
+                        "description": "Returns the rendered content of the article"
                     }
                 },
                 "security": [
@@ -4836,7 +4987,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Name of the organization to create"
                 },
                 "responses": {
                     "201": {
@@ -5214,7 +5366,7 @@
                         ]
                     }
                 ],
-                "summary": "Get properties keys",
+                "summary": "Get organization property keys",
                 "tags": [
                     "Organization"
                 ],
@@ -5329,7 +5481,7 @@
                         ]
                     }
                 ],
-                "summary": "Delete property",
+                "summary": "Delete organization property",
                 "tags": [
                     "Organization"
                 ],
@@ -5451,7 +5603,7 @@
                         ]
                     }
                 ],
-                "summary": "Get property",
+                "summary": "Get organization property",
                 "tags": [
                     "Organization"
                 ],
@@ -5590,7 +5742,7 @@
                         ]
                     }
                 ],
-                "summary": "Set property",
+                "summary": "Set organization property",
                 "tags": [
                     "Organization"
                 ],
@@ -5651,7 +5803,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the users to remove from the organization"
                 },
                 "responses": {
                     "204": {
@@ -5897,7 +6050,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the users to add to the organization"
                 },
                 "responses": {
                     "204": {
@@ -6216,7 +6370,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Service desk, request type and field values of the customer request to create"
                 },
                 "responses": {
                     "201": {
@@ -6332,7 +6487,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Service desk, request type and field values of the customer request to validate"
                 },
                 "responses": {
                     "200": {
@@ -6813,7 +6969,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Approve or decline decision to record on the approval"
                 },
                 "responses": {
                     "200": {
@@ -7084,7 +7241,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Temporary attachment IDs to attach, their visibility and an optional comment"
                 },
                 "responses": {
                     "201": {
@@ -7215,11 +7373,14 @@
                 "responses": {
                     "200": {
                         "content": {
-                            "application/json": {
-                                "schema": {}
+                            "application/octet-stream": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
                             }
                         },
-                        "description": "200 response"
+                        "description": "The attachment content"
                     },
                     "303": {
                         "description": "Returned if the request is successful. See the `Location` header for the download URL."
@@ -7330,11 +7491,14 @@
                 "responses": {
                     "200": {
                         "content": {
-                            "application/json": {
-                                "schema": {}
+                            "application/octet-stream": {
+                                "schema": {
+                                    "format": "binary",
+                                    "type": "string"
+                                }
                             }
                         },
-                        "description": "200 response"
+                        "description": "The attachment thumbnail image"
                     },
                     "303": {
                         "description": "Returned if the request is successful. See the `Location` header for the download URL."
@@ -7593,7 +7757,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Body and visibility of the comment to add to the request"
                 },
                 "responses": {
                     "201": {
@@ -8208,7 +8373,7 @@
                         ]
                     }
                 ],
-                "summary": "Subscribe",
+                "summary": "Subscribe to request notifications",
                 "tags": [
                     "Request"
                 ],
@@ -8270,7 +8435,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the users to remove as request participants"
                 },
                 "responses": {
                     "200": {
@@ -8523,7 +8689,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the users to add as request participants"
                 },
                 "responses": {
                     "200": {
@@ -9135,7 +9302,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "ID of the transition to perform and an optional comment"
                 },
                 "responses": {
                     "204": {
@@ -9247,12 +9415,7 @@
                 ],
                 "responses": {
                     "204": {
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        },
-                        "description": "No content."
+                        "description": "No content"
                     },
                     "401": {
                         "content": {
@@ -9633,7 +9796,8 @@
                                 "type": "string"
                             },
                             "type": "array"
-                        }
+                        },
+                        "description": "Comma-separated list of entities to expand in the response"
                     },
                     {
                         "description": "Whether to include hidden request types when searching with `searchQuery`.",
@@ -9933,26 +10097,38 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "description": "XSRF protection bypass that Jira requires on multipart requests. Must be `no-check`",
+                        "in": "header",
+                        "name": "X-Atlassian-Token",
+                        "required": false,
+                        "schema": {
+                            "default": "no-check",
+                            "type": "string"
+                        },
+                        "x-ballerina-name": "xAtlassianToken"
                     }
                 ],
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "items": {
-                                    "$ref": "#/components/schemas/MultipartFile"
-                                },
-                                "type": "array"
+                                "$ref": "#/components/schemas/AttachTemporaryFileRequest"
                             }
                         }
                     },
+                    "description": "Files to upload as temporary attachments, as multipart form data",
                     "required": true
                 },
                 "responses": {
                     "201": {
                         "content": {
                             "application/json": {
-                                "example": "{\"temporaryAttachments\":[{\"temporaryAttachmentId\":\"temp8186986881700442965\",\"fileName\":\"atlassian.png\"},{\"temporaryAttachmentId\":\"temp589064256337898328\",\"fileName\":\"readme.txt\"}]}"
+                                "example": "{\"temporaryAttachments\":[{\"temporaryAttachmentId\":\"temp8186986881700442965\",\"fileName\":\"atlassian.png\"},{\"temporaryAttachmentId\":\"temp589064256337898328\",\"fileName\":\"readme.txt\"}]}",
+                                "schema": {
+                                    "$ref": "#/components/schemas/TemporaryAttachments"
+                                }
                             }
                         },
                         "description": "Returns if the file(s) were attached."
@@ -10090,7 +10266,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the customers to remove from the service desk"
                 },
                 "responses": {
                     "204": {
@@ -10348,7 +10525,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Account IDs of the customers to add to the service desk"
                 },
                 "responses": {
                     "204": {
@@ -10477,7 +10655,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Email address and display name of the customer to invite"
                 },
                 "responses": {
                     "201": {
@@ -10615,15 +10794,10 @@
                 },
                 "responses": {
                     "204": {
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        },
                         "description": "The request completed successfully. No additional content will be sent in the response."
                     }
                 },
-                "summary": "Add customers",
+                "summary": "Add customers without permission check",
                 "x-atlassian-data-security-policy": [
                     {
                         "app-access-rule-exempt": true
@@ -10644,7 +10818,8 @@
                         "required": true,
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The ID of the service desk"
                     },
                     {
                         "description": "The string used to filter the articles (required).",
@@ -10760,7 +10935,7 @@
                         ]
                     }
                 ],
-                "summary": "Get articles",
+                "summary": "Get articles of a service desk",
                 "tags": [
                     "Servicedesk"
                 ],
@@ -10799,7 +10974,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "ID of the organization to remove from the service desk"
                 },
                 "responses": {
                     "204": {
@@ -10982,7 +11158,7 @@
                         ]
                     }
                 ],
-                "summary": "Get organizations",
+                "summary": "Get organizations of a service desk",
                 "tags": [
                     "Organization"
                 ],
@@ -11035,7 +11211,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "ID of the organization to add to the service desk"
                 },
                 "responses": {
                     "204": {
@@ -11346,7 +11523,7 @@
                         ]
                     }
                 ],
-                "summary": "Get queue",
+                "summary": "Get a service desk queue",
                 "tags": [
                     "Servicedesk"
                 ],
@@ -11543,7 +11720,8 @@
                                 "type": "string"
                             },
                             "type": "array"
-                        }
+                        },
+                        "description": "Comma-separated list of entities to expand in the response"
                     },
                     {
                         "description": "The string to be used to filter the results.",
@@ -11705,7 +11883,8 @@
                             }
                         }
                     },
-                    "required": true
+                    "required": true,
+                    "description": "Issue type, name and help text of the request type to create"
                 },
                 "responses": {
                     "200": {
@@ -11803,7 +11982,8 @@
                         "required": true,
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The ID of the service desk"
                     }
                 ],
                 "requestBody": {
@@ -12028,7 +12208,8 @@
                                 "type": "string"
                             },
                             "type": "array"
-                        }
+                        },
+                        "description": "Comma-separated list of entities to expand in the response"
                     }
                 ],
                 "responses": {
@@ -12332,7 +12513,7 @@
                         ]
                     }
                 ],
-                "summary": "Get properties keys",
+                "summary": "Get request type property keys",
                 "tags": [
                     "Servicedesk"
                 ],
@@ -12458,7 +12639,7 @@
                         ]
                     }
                 ],
-                "summary": "Delete property",
+                "summary": "Delete request type property",
                 "tags": [
                     "Servicedesk"
                 ],
@@ -12581,7 +12762,7 @@
                         ]
                     }
                 ],
-                "summary": "Get property",
+                "summary": "Get request type property",
                 "tags": [
                     "Servicedesk"
                 ],
@@ -12643,6 +12824,15 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    },
+                    "description": "The value of the request type property. The value has to be a valid, non-empty [JSON](https://tools.ietf.org/html/rfc4627) value. The maximum length of the property value is 32768 bytes",
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "content": {
@@ -12718,7 +12908,7 @@
                         ]
                     }
                 ],
-                "summary": "Set property",
+                "summary": "Set request type property",
                 "tags": [
                     "Servicedesk"
                 ],

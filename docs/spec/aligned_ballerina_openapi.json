@@ -155,6 +155,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Email address and display name of the customer to create",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -166,8 +167,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Email address and display name of the customer to create"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -472,6 +472,7 @@
                     {
                         "name": "start",
                         "in": "query",
+                        "description": "The starting index of the returned objects. Base index: 0",
                         "required": false,
                         "style": "form",
                         "explode": true,
@@ -479,12 +480,12 @@
                             "type": "integer",
                             "format": "int32",
                             "default": 0
-                        },
-                        "description": "The starting index of the returned objects. Base index: 0"
+                        }
                     },
                     {
                         "name": "limit",
                         "in": "query",
+                        "description": "The maximum number of objects to return per page",
                         "required": false,
                         "style": "form",
                         "explode": true,
@@ -492,8 +493,7 @@
                             "type": "integer",
                             "format": "int32",
                             "default": 50
-                        },
-                        "description": "The maximum number of objects to return per page"
+                        }
                     }
                 ],
                 "responses": {
@@ -708,14 +708,14 @@
                     {
                         "name": "pageId",
                         "in": "path",
+                        "description": "The ID of the knowledge base article page",
                         "required": true,
                         "style": "simple",
                         "explode": false,
                         "schema": {
                             "type": "integer",
                             "format": "int64"
-                        },
-                        "description": "The ID of the knowledge base article page"
+                        }
                     }
                 ],
                 "responses": {
@@ -900,6 +900,7 @@
                 "description": "This method creates an organization by passing the name of the organization.\n\n**[Permissions](#permissions) required**: Service desk administrator or agent. Note: Permission to create organizations can be switched to users with the Jira administrator permission, using the **[Organization management](https://confluence.atlassian.com/servicedeskcloud/setting-up-service-desk-users-732528877.html#Settingupservicedeskusers-manageorgsManageorganizations)** feature.",
                 "operationId": "createOrganization",
                 "requestBody": {
+                    "description": "Name of the organization to create",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -910,8 +911,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Name of the organization to create"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -1862,6 +1862,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the users to add to the organization",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -1876,8 +1877,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the users to add to the organization"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -1989,6 +1989,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the users to remove from the organization",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -2003,8 +2004,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the users to remove from the organization"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -2311,6 +2311,7 @@
                 "description": "This method creates a customer request in a service desk.\n\nThe JSON request must include the service desk and customer request type, as well as any fields that are required for the request type. A list of the fields required by a customer request type can be obtained using [servicedesk/\\{serviceDeskId\\}/requesttype/\\{requestTypeId\\}/field](#api-servicedesk-serviceDeskId-requesttype-requestTypeId-field-get).\n\nThe fields required for a customer request type depend on the user's permissions:\n\n *  `raiseOnBehalfOf` is not available to Users who have the customer permission only.\n *  `requestParticipants` is not available to Users who have the customer permission only or if the feature is turned off for customers.\n\n`requestFieldValues` is a map of Jira field IDs and their values. See [Field input formats](#fieldformats), for details of each field's JSON semantics and the values they can take.\n\n**[Permissions](#permissions) required**: Permission to create requests in the specified service desk.",
                 "operationId": "createCustomerRequest",
                 "requestBody": {
+                    "description": "Service desk, request type and field values of the customer request to create",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -2353,8 +2354,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Service desk, request type and field values of the customer request to create"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -2463,6 +2463,7 @@
                 "description": "Validates a customer request payload without creating (persisting) a request.\n\nThis endpoint runs exactly the same structural and semantic validations as [Create customer request](#api-request-post) \\\\u2014 including ProForma form validation \\\\u2014 but performs **no mutation**: no issue is created and no side effects (attachments, comments, analytics) run.\n\nThe response is intentionally verbose and structured so that it can be consumed by automated agents (for example an LLM repairing an invalid payload): every failure carries a machine-readable location (field id / form entity) and a human-readable reason. A valid payload returns HTTP 200 with \\{@code valid: true\\}; an invalid payload returns HTTP 400 with \\{@code valid: false\\} together with the field, form and general validation errors.\n\n**[Permissions](#permissions) required**: Permission to create requests in the specified service desk.",
                 "operationId": "validateCustomerRequest",
                 "requestBody": {
+                    "description": "Service desk, request type and field values of the customer request to validate",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -2470,8 +2471,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Service desk, request type and field values of the customer request to validate"
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -2963,6 +2963,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Approve or decline decision to record on the approval",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -2973,8 +2974,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Approve or decline decision to record on the approval"
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -3236,6 +3236,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Temporary attachment IDs to attach, their visibility and an optional comment",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -3253,8 +3254,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Temporary attachment IDs to attach, their visibility and an optional comment"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -3785,6 +3785,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Body and visibility of the comment to add to the request",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -3796,8 +3797,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Body and visibility of the comment to add to the request"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -4613,6 +4613,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the users to add as request participants",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4628,8 +4629,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the users to add as request participants"
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -4748,6 +4748,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the users to remove as request participants",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -4763,8 +4764,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the users to remove as request participants"
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -5393,6 +5393,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "ID of the transition to perform and an optional comment",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -5406,8 +5407,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "ID of the transition to perform and an optional comment"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -5912,6 +5912,7 @@
                     {
                         "name": "expand",
                         "in": "query",
+                        "description": "Comma-separated list of entities to expand in the response",
                         "required": false,
                         "style": "form",
                         "explode": true,
@@ -5921,8 +5922,7 @@
                                 "type": "string",
                                 "default": ""
                             }
-                        },
-                        "description": "Comma-separated list of entities to expand in the response"
+                        }
                     },
                     {
                         "name": "includeHiddenRequestTypesInSearch",
@@ -6242,8 +6242,10 @@
                     {
                         "name": "X-Atlassian-Token",
                         "in": "header",
-                        "required": false,
                         "description": "XSRF protection bypass that Jira requires on multipart requests. Must be `no-check`",
+                        "required": false,
+                        "style": "simple",
+                        "explode": false,
                         "schema": {
                             "type": "string",
                             "default": "no-check"
@@ -6252,6 +6254,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Files to upload as temporary attachments, as multipart form data",
                     "content": {
                         "multipart/form-data": {
                             "schema": {
@@ -6259,18 +6262,17 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Files to upload as temporary attachments, as multipart form data"
+                    "required": true
                 },
                 "responses": {
                     "201": {
                         "description": "Returns if the file(s) were attached",
                         "content": {
                             "application/json": {
-                                "example": "{\"temporaryAttachments\":[{\"temporaryAttachmentId\":\"temp8186986881700442965\",\"fileName\":\"atlassian.png\"},{\"temporaryAttachmentId\":\"temp589064256337898328\",\"fileName\":\"readme.txt\"}]}",
                                 "schema": {
                                     "$ref": "#/components/schemas/TemporaryAttachments"
-                                }
+                                },
+                                "example": "{\"temporaryAttachments\":[{\"temporaryAttachmentId\":\"temp8186986881700442965\",\"fileName\":\"atlassian.png\"},{\"temporaryAttachmentId\":\"temp589064256337898328\",\"fileName\":\"readme.txt\"}]}"
                             }
                         }
                     },
@@ -6531,6 +6533,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the customers to add to the service desk",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6550,8 +6553,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the customers to add to the service desk"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -6661,6 +6663,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Account IDs of the customers to remove from the service desk",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6680,8 +6683,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Account IDs of the customers to remove from the service desk"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -6805,6 +6807,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Email address and display name of the customer to invite",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -6816,8 +6819,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Email address and display name of the customer to invite"
+                    "required": true
                 },
                 "responses": {
                     "201": {
@@ -6978,13 +6980,13 @@
                     {
                         "name": "serviceDeskId",
                         "in": "path",
+                        "description": "The ID of the service desk",
                         "required": true,
                         "style": "simple",
                         "explode": false,
                         "schema": {
                             "type": "string"
-                        },
-                        "description": "The ID of the service desk"
+                        }
                     },
                     {
                         "name": "query",
@@ -7287,6 +7289,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "ID of the organization to add to the service desk",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7297,8 +7300,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "ID of the organization to add to the service desk"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -7398,6 +7400,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "ID of the organization to remove from the service desk",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -7408,8 +7411,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "ID of the organization to remove from the service desk"
+                    "required": true
                 },
                 "responses": {
                     "204": {
@@ -7944,6 +7946,7 @@
                     {
                         "name": "expand",
                         "in": "query",
+                        "description": "Comma-separated list of entities to expand in the response",
                         "required": false,
                         "style": "form",
                         "explode": true,
@@ -7953,8 +7956,7 @@
                                 "type": "string",
                                 "default": ""
                             }
-                        },
-                        "description": "Comma-separated list of entities to expand in the response"
+                        }
                     },
                     {
                         "name": "searchQuery",
@@ -8120,6 +8122,7 @@
                     }
                 ],
                 "requestBody": {
+                    "description": "Issue type, name and help text of the request type to create",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -8133,8 +8136,7 @@
                             }
                         }
                     },
-                    "required": true,
-                    "description": "Issue type, name and help text of the request type to create"
+                    "required": true
                 },
                 "responses": {
                     "200": {
@@ -8229,13 +8231,13 @@
                     {
                         "name": "serviceDeskId",
                         "in": "path",
+                        "description": "The ID of the service desk",
                         "required": true,
                         "style": "simple",
                         "explode": false,
                         "schema": {
                             "type": "string"
-                        },
-                        "description": "The ID of the service desk"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -8359,6 +8361,7 @@
                     {
                         "name": "expand",
                         "in": "query",
+                        "description": "Comma-separated list of entities to expand in the response",
                         "required": false,
                         "style": "form",
                         "explode": true,
@@ -8368,8 +8371,7 @@
                                 "type": "string",
                                 "default": ""
                             }
-                        },
-                        "description": "Comma-separated list of entities to expand in the response"
+                        }
                     }
                 ],
                 "responses": {
@@ -8985,6 +8987,15 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "description": "The value of the request type property. The value has to be a valid, non-empty [JSON](https://tools.ietf.org/html/rfc4627) value. The maximum length of the property value is 32768 bytes",
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
                         "description": "Returned if the request type property is updated",
@@ -9084,16 +9095,7 @@
                     }
                 ],
                 "x-experimental": true,
-                "x-atlassian-connect-scope": "INACCESSIBLE",
-                "requestBody": {
-                    "description": "The value of the request type property. The value has to be a valid, non-empty [JSON](https://tools.ietf.org/html/rfc4627) value. The maximum length of the property value is 32768 bytes",
-                    "content": {
-                        "application/json": {
-                            "schema": {}
-                        }
-                    },
-                    "required": true
-                }
+                "x-atlassian-connect-scope": "INACCESSIBLE"
             },
             "delete": {
                 "tags": [
@@ -9429,11 +9431,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -9454,8 +9456,8 @@
                 "properties": {
                     "self": {
                         "type": "string",
-                        "format": "uri",
-                        "description": "URL of the resource"
+                        "description": "URL of the resource",
+                        "format": "uri"
                     }
                 },
                 "additionalProperties": false,
@@ -9487,16 +9489,31 @@
                 "additionalProperties": true,
                 "description": "Users to add to or remove from an organization"
             },
+            "AttachTemporaryFileRequest": {
+                "required": [
+                    "file"
+                ],
+                "type": "object",
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "description": "The file to upload. The multipart field must be named `file`",
+                        "format": "binary"
+                    }
+                },
+                "description": "Multipart form carrying the file to upload as a temporary attachment"
+            },
             "JsonNode": {
                 "type": "object",
                 "properties": {
                     "valueAsDouble": {
                         "type": "number",
-                        "format": "double",
-                        "description": "Node value as a double"
+                        "description": "Node value as a double",
+                        "format": "double"
                     },
                     "numberType": {
                         "type": "string",
+                        "description": "Numeric type of the node",
                         "enum": [
                             "INT",
                             "LONG",
@@ -9504,8 +9521,7 @@
                             "FLOAT",
                             "DOUBLE",
                             "BIG_DECIMAL"
-                        ],
-                        "description": "Numeric type of the node"
+                        ]
                     },
                     "fieldNames": {
                         "type": "object",
@@ -9529,13 +9545,13 @@
                     },
                     "longValue": {
                         "type": "integer",
-                        "format": "int64",
-                        "description": "Node value as a long"
+                        "description": "Node value as a long",
+                        "format": "int64"
                     },
                     "valueAsInt": {
                         "type": "integer",
-                        "format": "int32",
-                        "description": "Node value as an integer"
+                        "description": "Node value as an integer",
+                        "format": "int32"
                     },
                     "missingNode": {
                         "type": "boolean",
@@ -9567,8 +9583,8 @@
                     },
                     "valueAsLong": {
                         "type": "integer",
-                        "format": "int64",
-                        "description": "Node value as a long"
+                        "description": "Node value as a long",
+                        "format": "int64"
                     },
                     "integralNumber": {
                         "type": "boolean",
@@ -9584,8 +9600,8 @@
                     },
                     "intValue": {
                         "type": "integer",
-                        "format": "int32",
-                        "description": "Node value as an integer"
+                        "description": "Node value as an integer",
+                        "format": "int32"
                     },
                     "bigInteger": {
                         "type": "boolean",
@@ -9593,8 +9609,8 @@
                     },
                     "doubleValue": {
                         "type": "number",
-                        "format": "double",
-                        "description": "Node value as a double"
+                        "description": "Node value as a double",
+                        "format": "double"
                     },
                     "floatingPointNumber": {
                         "type": "boolean",
@@ -9642,11 +9658,11 @@
                     },
                     "binaryValue": {
                         "type": "array",
+                        "description": "Binary value of the node",
                         "items": {
                             "type": "string",
                             "format": "byte"
-                        },
-                        "description": "Binary value of the node"
+                        }
                     },
                     "object": {
                         "type": "boolean",
@@ -9710,11 +9726,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -9772,6 +9788,20 @@
                 },
                 "additionalProperties": false,
                 "description": "SLA metric of a customer request, with its ongoing and completed cycles"
+            },
+            "TemporaryAttachment": {
+                "type": "object",
+                "properties": {
+                    "fileName": {
+                        "type": "string",
+                        "description": "Name of the uploaded file"
+                    },
+                    "temporaryAttachmentId": {
+                        "type": "string",
+                        "description": "ID of the temporary attachment, used to attach it to a request"
+                    }
+                },
+                "description": "A file uploaded as a temporary attachment"
             },
             "SlaInformationCompletedCycleDTO": {
                 "type": "object",
@@ -10163,11 +10193,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -10266,11 +10296,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -10306,8 +10336,8 @@
                     },
                     "self": {
                         "type": "string",
-                        "format": "uri",
-                        "description": "REST API URL of the customer request"
+                        "description": "REST API URL of the customer request",
+                        "format": "uri"
                     }
                 },
                 "additionalProperties": false,
@@ -10442,11 +10472,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -10579,11 +10609,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -10819,11 +10849,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -10869,11 +10899,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -11093,12 +11123,12 @@
                         ]
                     },
                     "fieldsToInclude": {
+                        "description": "Fields to include in the issue response",
                         "allOf": [
                             {
                                 "$ref": "#/components/schemas/IncludedFields"
                             }
-                        ],
-                        "description": "Fields to include in the issue response"
+                        ]
                     },
                     "changelog": {
                         "description": "Details of changelogs associated with the issue",
@@ -11374,11 +11404,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -11402,12 +11432,12 @@
                         "description": "Human-readable error message"
                     },
                     "i18nErrorMessage": {
+                        "description": "Internationalized form of the error message",
                         "allOf": [
                             {
                                 "$ref": "#/components/schemas/I18nErrorMessage"
                             }
-                        ],
-                        "description": "Internationalized form of the error message"
+                        ]
                     }
                 },
                 "additionalProperties": false,
@@ -11443,11 +11473,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -11513,26 +11543,26 @@
                     "excluded": {
                         "uniqueItems": true,
                         "type": "array",
+                        "description": "Fields explicitly excluded from the response",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "Fields explicitly excluded from the response"
+                        }
                     },
                     "actuallyIncluded": {
                         "uniqueItems": true,
                         "type": "array",
+                        "description": "Fields actually included in the response",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "Fields actually included in the response"
+                        }
                     },
                     "included": {
                         "uniqueItems": true,
                         "type": "array",
+                        "description": "Fields explicitly requested in the response",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "Fields explicitly requested in the response"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -11818,12 +11848,12 @@
                         "description": "Title of the article"
                     },
                     "content": {
+                        "description": "Location of the rendered article content",
                         "allOf": [
                             {
                                 "$ref": "#/components/schemas/ContentDTO"
                             }
-                        ],
-                        "description": "Location of the rendered article content"
+                        ]
                     }
                 },
                 "additionalProperties": false,
@@ -11859,11 +11889,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -11959,8 +11989,8 @@
                 "properties": {
                     "weight": {
                         "type": "integer",
-                        "format": "int32",
-                        "description": "Sort weight of the link"
+                        "description": "Sort weight of the link",
+                        "format": "int32"
                     },
                     "href": {
                         "type": "string",
@@ -12034,11 +12064,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -12084,11 +12114,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -12174,11 +12204,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -12683,11 +12713,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -12711,8 +12741,8 @@
                         "additionalProperties": {
                             "$ref": "#/components/schemas/FieldMetadata"
                         },
-                        "readOnly": true,
-                        "description": "Metadata of the editable fields, keyed by field ID"
+                        "description": "Metadata of the editable fields, keyed by field ID",
+                        "readOnly": true
                     }
                 },
                 "description": "A list of editable field details"
@@ -12722,30 +12752,30 @@
                 "properties": {
                     "groups": {
                         "type": "array",
+                        "description": "Nested link groups",
                         "items": {
                             "$ref": "#/components/schemas/LinkGroup"
-                        },
-                        "description": "Nested link groups"
+                        }
                     },
                     "header": {
+                        "description": "Header link of the group",
                         "allOf": [
                             {
                                 "$ref": "#/components/schemas/SimpleLink"
                             }
-                        ],
-                        "description": "Header link of the group"
+                        ]
                     },
                     "weight": {
                         "type": "integer",
-                        "format": "int32",
-                        "description": "Sort weight of the group"
+                        "description": "Sort weight of the group",
+                        "format": "int32"
                     },
                     "links": {
                         "type": "array",
+                        "description": "Links in the group",
                         "items": {
                             "$ref": "#/components/schemas/SimpleLink"
-                        },
-                        "description": "Links in the group"
+                        }
                     },
                     "id": {
                         "type": "string",
@@ -12806,6 +12836,19 @@
                 "additionalProperties": false,
                 "description": "Details of a customer request to create"
             },
+            "TemporaryAttachments": {
+                "type": "object",
+                "properties": {
+                    "temporaryAttachments": {
+                        "type": "array",
+                        "description": "The uploaded temporary attachments",
+                        "items": {
+                            "$ref": "#/components/schemas/TemporaryAttachment"
+                        }
+                    }
+                },
+                "description": "Temporary attachments created by an upload"
+            },
             "AttachmentLinkDTO": {
                 "type": "object",
                 "properties": {
@@ -12821,8 +12864,8 @@
                     },
                     "self": {
                         "type": "string",
-                        "format": "uri",
-                        "description": "REST API URL of the attachment"
+                        "description": "REST API URL of the attachment",
+                        "format": "uri"
                     },
                     "content": {
                         "type": "string",
@@ -12864,10 +12907,10 @@
                     },
                     "parameters": {
                         "type": "array",
+                        "description": "Parameters substituted into the message",
                         "items": {
                             "type": "string"
-                        },
-                        "description": "Parameters substituted into the message"
+                        }
                     }
                 },
                 "additionalProperties": false,
@@ -13028,8 +13071,8 @@
                     },
                     "self": {
                         "type": "string",
-                        "format": "uri",
-                        "description": "REST API URL of the user"
+                        "description": "REST API URL of the user",
+                        "format": "uri"
                     }
                 },
                 "additionalProperties": false,
@@ -13155,11 +13198,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -13205,11 +13248,11 @@
                     },
                     "_expands": {
                         "type": "array",
+                        "description": "Fields that can be expanded in the response",
                         "items": {
                             "type": "string"
                         },
-                        "x-ballerina-name": "expands",
-                        "description": "Fields that can be expanded in the response"
+                        "x-ballerina-name": "expands"
                     },
                     "limit": {
                         "type": "integer",
@@ -13338,47 +13381,6 @@
                 },
                 "additionalProperties": false,
                 "description": "An answer to a form question"
-            },
-            "AttachTemporaryFileRequest": {
-                "type": "object",
-                "required": [
-                    "file"
-                ],
-                "description": "Multipart form carrying the file to upload as a temporary attachment",
-                "properties": {
-                    "file": {
-                        "type": "string",
-                        "format": "binary",
-                        "description": "The file to upload. The multipart field must be named `file`"
-                    }
-                }
-            },
-            "TemporaryAttachment": {
-                "type": "object",
-                "description": "A file uploaded as a temporary attachment",
-                "properties": {
-                    "temporaryAttachmentId": {
-                        "type": "string",
-                        "description": "ID of the temporary attachment, used to attach it to a request"
-                    },
-                    "fileName": {
-                        "type": "string",
-                        "description": "Name of the uploaded file"
-                    }
-                }
-            },
-            "TemporaryAttachments": {
-                "type": "object",
-                "description": "Temporary attachments created by an upload",
-                "properties": {
-                    "temporaryAttachments": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/TemporaryAttachment"
-                        },
-                        "description": "The uploaded temporary attachments"
-                    }
-                }
             }
         },
         "parameters": {
